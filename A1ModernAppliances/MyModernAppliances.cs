@@ -16,7 +16,7 @@ namespace ModernAppliances
         /// </summary>
         public override void Checkout()
         {
-            // Alexandr Shagabutdinov 
+            // Alex Shagabutdinov 
 
             // Write "Enter the item number of an appliance: "
 
@@ -51,7 +51,7 @@ namespace ModernAppliances
         /// </summary>
         public override void Find()
         {
-            // Alexandr Shagabutdinov
+            // Alex Shagabutdinov
 
             // Write "Enter brand to search for:"
 
