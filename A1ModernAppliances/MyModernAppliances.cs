@@ -16,6 +16,8 @@ namespace ModernAppliances
         /// </summary>
         public override void Checkout()
         {
+            // Alexandr Shagabutdinov 
+
             // Write "Enter the item number of an appliance: "
 
             // Create long variable to hold item number
@@ -49,6 +51,8 @@ namespace ModernAppliances
         /// </summary>
         public override void Find()
         {
+            // Alexandr Shagabutdinov
+
             // Write "Enter brand to search for:"
 
             // Create string variable to hold entered brand
