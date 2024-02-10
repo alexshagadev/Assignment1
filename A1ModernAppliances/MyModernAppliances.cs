@@ -16,6 +16,7 @@ namespace ModernAppliances
         /// </summary>
         public override void Checkout()
         {
+            
             // Alex Shagabutdinov 
 
             // Write "Enter the item number of an appliance: "
