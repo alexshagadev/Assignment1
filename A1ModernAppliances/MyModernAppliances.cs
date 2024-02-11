@@ -37,7 +37,7 @@ namespace ModernAppliances
 
             foreach (Appliance appliance in Appliances)
             {
-                Console.WriteLine($"Checking appliance with item number: {appliance.ItemNumber}");
+                
                 if (appliance.ItemNumber == itemNumber)
                 {
                     foundAppliance = appliance;
@@ -56,21 +56,19 @@ namespace ModernAppliances
                 Console.WriteLine("No appliance with that number was found");
 
             }
-            else
-            {
-                if (foundAppliance.IsAvailable)
-                {
-                    foundAppliance.Checkout();
-                    Console.WriteLine("Appliance has been checked out");
-                }
+                else if (foundAppliance.IsAvailable)
+                    {
+                        foundAppliance.Checkout();
+                        Console.WriteLine($"Appliance \"{itemNumber}\" has been checked out");
+                    }
 
-                else
-                {
-                    Console.WriteLine("The item is not available to be checked out");
-                }
+                    else
+                    {
+                        Console.WriteLine("The item is not available to be checked out");
+                    }
                 
             }
-        }
+        
 
             // Otherwise (appliance was found)
             // Test found appliance is available
@@ -180,67 +178,114 @@ namespace ModernAppliances
         /// </summary>
         /// <param name="grade">Grade of vacuum to find (or null for any grade)</param>
         /// <param name="voltage">Vacuum voltage (or 0 for any voltage)</param>
+        /// 
         public override void DisplayVacuums()
         {
+
             // Write "Possible options:"
 
+            Console.WriteLine("Possible options: ");
+
             // Write "0 - Any"
+            Console.WriteLine("0 - Any");
             // Write "1 - Residential"
+            Console.WriteLine("1 - Residential");
             // Write "2 - Commercial"
-
+            Console.WriteLine("2 - Commercial");
             // Write "Enter grade:"
-
+            Console.WriteLine("Enter grade:");
             // Get user input as string and assign to variable
+            string userInput = Console.ReadLine();
 
             // Create grade variable to hold grade to find (Any, Residential, or Commercial)
-
+            string grade;
             // Test input is "0"
-                // Assign "Any" to grade
+            if (userInput == "0") { grade = "Any"; }
+            // Assign "Any" to grade
             // Test input is "1"
-                // Assign "Residential" to grade
+            else if (userInput == "1") { grade = "Residential"; }
+            // Assign "Residential" to grade
             // Test input is "2"
-                // Assign "Commercial" to grade
+            else if (userInput == "2") { grade = "Commercial"; }
+            // Assign "Commercial" to grade
             // Otherwise (input is something else)
+            else
+            {
+                Console.WriteLine("Invalid Option ");
                 // Write "Invalid option."
 
                 // Return to calling (previous) method
                 // return;
-
+                return;
+            }
             // Write "Possible options:"
-
+            Console.WriteLine("Possible options: ");
             // Write "0 - Any"
+            Console.WriteLine("0 - Any ");
             // Write "1 - 18 Volt"
+            Console.WriteLine("1 - 18 Volt");
             // Write "2 - 24 Volt"
+            Console.WriteLine("2 - 24 Volt");
 
             // Write "Enter voltage:"
+            Console.WriteLine("Enter voltage:");
 
             // Get user input as string
+
+            string userInputVoltage = Console.ReadLine();
             // Create variable to hold voltage
+            int voltage;
 
             // Test input is "0"
-                // Assign 0 to voltage
+            if (userInputVoltage == "0") { voltage = 0; }
+            // Assign 0 to voltage
             // Test input is "1"
-                // Assign 18 to voltage
+            else if (userInputVoltage == "1") { voltage = 18; }
+            // Assign 18 to voltage
             // Test input is "2"
-                // Assign 24 to voltage
+            else if (userInputVoltage == "2") { voltage = 24; }
+            // Assign 24 to voltage
             // Otherwise
-                // Write "Invalid option."
-                // Return to calling (previous) method
-                // return;
+            // Write "Invalid option."
+            else
+            {
+                Console.WriteLine("Invalid option");
+                return;
+            }
+            // Return to calling (previous) method
+            // return;
 
             // Create found variable to hold list of found appliances.
 
+            List<Appliance> found = new List<Appliance>();
             // Loop through Appliances
+            foreach (Appliance appliance in Appliances)
+            {
                 // Check if current appliance is vacuum
+                if (appliance.Type == Appliance.ApplianceTypes.Vacuum)
+                {
                     // Down cast current Appliance to Vacuum object
-                    // Vacuum vacuum = (Vacuum)appliance;
+                    Vacuum vacuum = (Vacuum)appliance;
+                    // Test grade is "Any" or grade is equal to current vacuum grade and voltage is 0 or voltage is equal to current vacuum volta
 
-                    // Test grade is "Any" or grade is equal to current vacuum grade and voltage is 0 or voltage is equal to current vacuum voltage
+                    if (grade == "Any" || vacuum.Grade == grade && voltage == 0 || voltage == vacuum.BatteryVoltage)
+                    {
                         // Add current appliance in list to found list
+                        found.Add(appliance);
+                        
+                    }
 
-            // Display found appliances
-            // DisplayAppliancesFromList(found, 0);
+
+                }
+            }
+            DisplayAppliancesFromList(found, 0);
         }
+                    // Display found appliances
+                    // DisplayAppliancesFromList(found, 0);
+    
+                
+
+
 
         /// <summary>
         /// Displays microwaves
@@ -309,7 +354,7 @@ namespace ModernAppliances
                     // Down cast Appliance to Microwave
                     Microwave microwave = (Microwave)appliance;
                     // Test room type equals 'A' or microwave room type
-                    Console.WriteLine(microwave.RoomType);
+                    
                     if (rmType == 'A' || microwave.RoomType == 'A')
                         found.Add(appliance);
 
@@ -342,43 +387,102 @@ namespace ModernAppliances
         {
             // Write "Possible options:"
 
+            Console.WriteLine("Possible Options: ");
+
             // Write "0 - Any"
+            Console.WriteLine("0 - Any ");
             // Write "1 - Quietest"
+            Console.WriteLine("1 - Quietest ");
             // Write "2 - Quieter"
+            Console.WriteLine("2 - Quieter ");
             // Write "3 - Quiet"
+            Console.WriteLine("3 - Quiet ");
             // Write "4 - Moderate"
+            Console.WriteLine("4 - Moderate");
 
             // Write "Enter sound rating:"
+            Console.WriteLine("Enter sound rating: ");
 
             // Get user input as string and assign to variable
-
+            string UserInput = Console.ReadLine();
             // Create variable that holds sound rating
-
+            string soundRating;
             // Test input is "0"
-                // Assign "Any" to sound rating variable
+            if (UserInput == "0")
+            // Assign "Any" to sound rating variable
+            {
+                soundRating = "Any";
+                    }
+
             // Test input is "1"
-                // Assign "Qt" to sound rating variable
+            else if (UserInput == "1")
+            // Assign "Qt" to sound rating variable
+            {
+                soundRating = "Qt";
+            }
             // Test input is "2"
-                // Assign "Qr" to sound rating variable
+            else if (UserInput == "2")
+            // Assign "Qr" to sound rating variable
+            {
+                soundRating = "Qr";
+            }
             // Test input is "3"
-                // Assign "Qu" to sound rating variable
+
+            else if (UserInput == "3")
+            // Assign "Qu" to sound rating variable
+            {
+                soundRating = "Qu";
+            }
             // Test input is "4"
-                // Assign "M" to sound rating variable
+            else if (UserInput == "4")
+            // Assign "M" to sound rating variable
+            {
+                soundRating = "M";
+            }
             // Otherwise (input is something else)
-                // Write "Invalid option."
+            else
+
+            // Write "Invalid option."
+            {
+                Console.WriteLine("Invalid option.");
                 // Return to calling method
+                { return; }
+            }
+
 
             // Create variable that holds list of found appliances
 
-            // Loop through Appliances
-                // Test if current appliance is dishwasher
-                    // Down cast current Appliance to Dishwasher
+            List<Appliance> found = new List<Appliance>();
 
+
+            // Loop through Appliances
+            foreach (Appliance appliance in Appliances)
+            {
+                // Down cast current Appliance to Dishwasher
+                if (appliance.Type == Appliance.ApplianceTypes.Dishwasher)
+                {
+                    // Down cast Appliance to Microwave
+                    Dishwasher dishwasher = (Dishwasher)appliance;
                     // Test sound rating is "Any" or equals soundrating for current dishwasher
+                    
+                    if (soundRating == "Any" || dishwasher.SoundRating == soundRating)
                         // Add current appliance in list to found list
+                        found.Add(appliance);
+
+
+                }
+                DisplayAppliancesFromList(found, 0);
+            }
+
+            
+            
+            
+
+            
+            
 
             // Display found appliances (up to max. number inputted)
-            // DisplayAppliancesFromList(found, 0);
+            // 
         }
 
         /// <summary>
